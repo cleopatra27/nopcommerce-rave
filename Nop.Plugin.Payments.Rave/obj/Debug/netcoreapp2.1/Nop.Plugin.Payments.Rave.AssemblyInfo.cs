@@ -11,8 +11,9 @@
 using System;
 using System.Reflection;
 
-[assembly: System.Reflection.AssemblyCompanyAttribute("Nop.Plugin.Payments.Rave")]
+[assembly: System.Reflection.AssemblyCompanyAttribute("Flutterwave, Inc")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
+[assembly: System.Reflection.AssemblyCopyrightAttribute("Copyright © Flutterwave, Inc")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
 [assembly: System.Reflection.AssemblyProductAttribute("Nop.Plugin.Payments.Rave")]

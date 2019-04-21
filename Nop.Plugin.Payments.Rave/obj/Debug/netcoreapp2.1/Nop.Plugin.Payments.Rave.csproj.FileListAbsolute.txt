@@ -22,3 +22,7 @@
 /Users/cleopatradouglas/Downloads/nopCommerce_4.10_Source/Plugins/Nop.Plugin.Payments.Rave/netcoreapp2.1/netcoreapp2.1/Nop.Web.pdb
 /Users/cleopatradouglas/Downloads/nopCommerce_4.10_Source/Plugins/Nop.Plugin.Payments.Rave/netcoreapp2.1/netcoreapp2.1/Nop.Web.Framework.pdb
 /Users/cleopatradouglas/Downloads/nopCommerce_4.10_Source/Plugins/Nop.Plugin.Payments.Rave/obj/Debug/netcoreapp2.1/Nop.Plugin.Payments.Rave.csproj.CopyComplete
+/Users/cleopatradouglas/Downloads/nopCommerce_4.10_Source/Plugins/Nop.Plugin.Payments.Rave/netcoreapp2.1/netcoreapp2.1/Views/Configure.cshtml
+/Users/cleopatradouglas/Downloads/nopCommerce_4.10_Source/Plugins/Nop.Plugin.Payments.Rave/netcoreapp2.1/netcoreapp2.1/Views/PaymentInfo.cshtml
+/Users/cleopatradouglas/Downloads/nopCommerce_4.10_Source/Plugins/Nop.Plugin.Payments.Rave/netcoreapp2.1/netcoreapp2.1/Views/_ViewImports.cshtml
+/Users/cleopatradouglas/Downloads/nopCommerce_4.10_Source/Plugins/Nop.Plugin.Payments.Rave/netcoreapp2.1/netcoreapp2.1/logo.jpg
