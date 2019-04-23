@@ -127,14 +127,14 @@ namespace Nop.Plugin.Payments.Rave
 
             var country = postProcessPaymentRequest.Order.ShippingAddress?.Country.ThreeLetterIsoCode;
             var currency = _currencyService.GetCurrencyById(_currencySettings.PrimaryStoreCurrencyId)?.CurrencyCode;
-            var custom_description = "dkd";
-            var custom_logo = "djm";
-            var custom_title = "jdd";
+            var custom_description = "";
+            var custom_logo = _RavePaymentSettings.Custom_logo;
+            var custom_title = postProcessPaymentRequest.Order.CustomOrderNumber;
             var customer_email = postProcessPaymentRequest.Order.ShippingAddress?.Email;
             var customer_firstname = postProcessPaymentRequest.Order.ShippingAddress?.FirstName;
             var customer_lastname = postProcessPaymentRequest.Order.ShippingAddress?.LastName;
             var customer_phone = postProcessPaymentRequest.Order.ShippingAddress.PhoneNumber;
-            var payment_method = "dfd";
+            var payment_method = _RavePaymentSettings.Payment_method;
             var txref = postProcessPaymentRequest.Order.OrderGuid.ToString();
             var redirect_url = $"{storeLocation}Plugins/Rave/PDTHandler";
             var amount = "skd";
@@ -147,20 +147,19 @@ namespace Nop.Plugin.Payments.Rave
                 ["txref"] = postProcessPaymentRequest.Order.OrderGuid.ToString(),
                 ["PBFPubKey"] = _RavePaymentSettings.PublicKey,
                 ["taxpayer_email"] = postProcessPaymentRequest.Order.ShippingAddress?.Email,
-                ["amount"] = "utf-8",
-                ["payment_method"] = "card",
+                //["amount"] = "utf-8",
+                ["payment_method"] = _RavePaymentSettings.Payment_method,
                 ["country"] = postProcessPaymentRequest.Order.ShippingAddress?.Country.ThreeLetterIsoCode,
                 ["currency"] = _currencyService.GetCurrencyById(_currencySettings.PrimaryStoreCurrencyId)?.CurrencyCode,
                 ["redirect_url"] = $"{storeLocation}Plugins/Rave/PDTHandler",
                 ["taxpayer_firstname"] = postProcessPaymentRequest.Order.ShippingAddress?.FirstName,
                 ["taxpayer_lastname"] = postProcessPaymentRequest.Order.ShippingAddress?.LastName,
                 ["taxpayer_phone"] = postProcessPaymentRequest.Order.ShippingAddress.PhoneNumber,
-                ["custom_title"] = "utf-8",
-                ["custom_description"] = "utf-8",
-                ["custom_logo"] = "utf-8",
+                ["custom_title"] = postProcessPaymentRequest.Order.CustomOrderNumber,
+                ["custom_description"] = "",
+                ["custom_logo"] = _RavePaymentSettings.Custom_logo,
                 ["integrity_hash"] = this.GenerateSHA256String(amount, country, currency, custom_description, custom_logo,
-                    custom_title, customer_email, customer_firstname, customer_lastname, 
-                    customer_phone, payment_method, txref, redirect_url)
+                    custom_title, customer_email, customer_firstname, customer_lastname, customer_phone, payment_method, txref, redirect_url)
             };
         }
 
@@ -192,6 +191,7 @@ namespace Nop.Plugin.Payments.Rave
             //locales            
             _localizationService.AddOrUpdatePluginLocaleResource("Plugins.Payments.Rave.Fields.SecretKey", "Secret key, live or test");
             _localizationService.AddOrUpdatePluginLocaleResource("Plugins.Payments.Rave.Fields.Publickey", "Public key, live or test");
+            _localizationService.AddOrUpdatePluginLocaleResource("Plugins.Payments.Rave.Fields.Custom_logo", "Custom_logo, url");
             _localizationService.AddOrUpdatePluginLocaleResource("Plugins.Payments.Rave.Fields.Encryptkey", "Encyrpt fee");
             _localizationService.AddOrUpdatePluginLocaleResource("Plugins.Payments.Rave.Fields.Encryptkey.Hint", "Enter encyrpt key to charge your customers.");
             _localizationService.AddOrUpdatePluginLocaleResource("Plugins.Payments.Rave.Instructions", @"
@@ -240,6 +240,7 @@ namespace Nop.Plugin.Payments.Rave
         /// </summary>
         /// <param name="postProcessPaymentRequest">Payment info required for an order processing</param>
         public void PostProcessPayment(PostProcessPaymentRequest postProcessPaymentRequest)
+         //public string PostProcessPayment(PostProcessPaymentRequest postProcessPaymentRequest)
         {
             //create common query parameters for the request
             var queryParameters = CreateQueryParameters(postProcessPaymentRequest);
@@ -253,6 +254,8 @@ namespace Nop.Plugin.Payments.Rave
 
             var url = QueryHelpers.AddQueryString(GetRaveUrl(), queryParameters);
             //_httpContextAccessor.HttpContext.Response.Redirect(url);
+
+            //return url;
         }
 
 
@@ -269,20 +272,56 @@ namespace Nop.Plugin.Payments.Rave
 
         public RecurringPaymentType RecurringPaymentType => throw new NotImplementedException();
 
-        public PaymentMethodType PaymentMethodType => throw new NotImplementedException();
+        /// <summary>
+        /// Gets a payment method type
+        /// </summary>
+        public PaymentMethodType PaymentMethodType
+        {
+            get { return PaymentMethodType.Redirection; }
+        }
 
-        public bool SkipPaymentInfo => throw new NotImplementedException();
 
-        public string PaymentMethodDescription => throw new NotImplementedException();
+        /// <summary>
+        /// Gets a value indicating whether we should display a payment information page for this plugin
+        /// </summary>
+        public bool SkipPaymentInfo
+        {
+            get { return false; }
+        }
+
+        /// <summary>
+        /// Gets a payment method description that will be displayed on checkout pages in the public store
+        /// </summary>
+        public string PaymentMethodDescription
+        {
+            //return description of this payment method to be display on "payment method" checkout step. good practice is to make it localizable
+            //for example, for a redirection payment method, description may be like this: "You will be redirected to rave site to complete the payment"
+            get { return _localizationService.GetResource("Plugins.Payments.Rave.PaymentMethodDescription"); }
+        }
+
 
         public CancelRecurringPaymentResult CancelRecurringPayment(CancelRecurringPaymentRequest cancelPaymentRequest)
         {
             throw new NotImplementedException();
         }
 
+
+        /// <summary>
+        /// Gets a value indicating whether customers can complete a payment after order is placed but not completed (for redirection payment methods)
+        /// </summary>
+        /// <param name="order">Order</param>
+        /// <returns>Result</returns>
         public bool CanRePostProcessPayment(Order order)
         {
-            throw new NotImplementedException();
+            if (order == null)
+                throw new ArgumentNullException(nameof(order));
+
+            //let's ensure that at least 5 seconds passed after order is placed
+            //P.S. there's no any particular reason for that. we just do it
+            if ((DateTime.UtcNow - order.CreatedOnUtc).TotalSeconds < 5)
+                return false;
+
+            return true;
         }
 
         public CapturePaymentResult Capture(CapturePaymentRequest capturePaymentRequest)
@@ -300,14 +339,26 @@ namespace Nop.Plugin.Payments.Rave
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// Gets a name of a view component for displaying plugin in public store ("payment info" checkout step)
+        /// </summary>
+        /// <returns>View component name</returns>
         public string GetPublicViewComponentName()
         {
-            throw new NotImplementedException();
+            return "PaymentRaveStandard";
         }
 
         public bool HidePaymentMethod(IList<ShoppingCartItem> cart)
         {
             throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// Gets a configuration page URL
+        /// </summary>
+        public override string GetConfigurationPageUrl()
+        {
+            return $"{_webHelper.GetStoreLocation()}Admin/PaymentRStandard/Configure";
         }
 
         //public void PostProcessPayment(PostProcessPaymentRequest postProcessPaymentRequest)

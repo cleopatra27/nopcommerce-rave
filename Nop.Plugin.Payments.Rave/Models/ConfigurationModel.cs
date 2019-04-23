@@ -26,9 +26,13 @@ namespace Nop.Plugin.Payments.Rave.Models
         public string EncryptKey { get; set; }
         public bool EncryptKey_OverrideForStore { get; set; }
 
-        //[NopResourceDisplayName("Plugins.Payments.Rave.Fields.Redirect_url")]
-        //public string Redirect_url { get; set; }
-        //public bool Redirect_url_OverrideForStore { get; set; }
+        [NopResourceDisplayName("Plugins.Payments.Rave.Fields.Redirect_url")]
+        public string Custom_logo { get; set; }
+        public bool Custom_logo_OverrideForStore { get; set; }
+
+        [NopResourceDisplayName("Plugins.Payments.Rave.Fields.Payment_method")]
+        public string Payment_method { get; set; }
+        public bool Payment_method_OverrideForStore { get; set; }
 
         #endregion
     }

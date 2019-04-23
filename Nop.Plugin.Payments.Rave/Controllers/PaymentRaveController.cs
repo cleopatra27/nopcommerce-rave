@@ -106,7 +106,7 @@ namespace Nop.Plugin.Payments.Rave.Controllers
             //    model.AdditionalFeePercentage_OverrideForStore = _settingService.SettingExists(ravePaymentSettings, x => x.AdditionalFeePercentage, storeScope);
             //}
 
-            return View("~/Plugins/Payments.PayPalStandard/Views/Configure.cshtml", model);
+            return View("~/Plugins/Payments.Rave/Views/Configure.cshtml", model);
         }
 
         [HttpPost]
@@ -147,7 +147,7 @@ namespace Nop.Plugin.Payments.Rave.Controllers
             return Configure();
         }
 
-        //action displaying notification (warning) to a store owner about inaccurate PayPal rounding
+        //action displaying notification (warning) to a store owner about inaccurate Rave rounding
         [AuthorizeAdmin]
         [Area(AreaNames.Admin)]
         public IActionResult RoundingWarning(bool passProductNamesAndTotals)
@@ -157,7 +157,7 @@ namespace Nop.Plugin.Payments.Rave.Controllers
 
             //prices and total aren't rounded, so display warning
             if (passProductNamesAndTotals && !_shoppingCartSettings.RoundPricesDuringCalculation)
-                return Json(new { Result = _localizationService.GetResource("Plugins.Payments.PayPalStandard.RoundingWarning") });
+                return Json(new { Result = _localizationService.GetResource("Plugins.Payments.Rave.RoundingWarning") });
 
             return Json(new { Result = string.Empty });
         }

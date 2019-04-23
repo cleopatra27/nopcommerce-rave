@@ -24,11 +24,15 @@ namespace Nop.Plugin.Payments.Rave
         public string Encryptkey { get; set; }
 
 
-        ///// <summary>
-        ///// Gets or sets a Redirect_url
-        ///// </summary>
-        //public string Redirect_url { get; set; }
+        /// <summary>
+        /// Gets or sets a Custom_logo
+        /// </summary>
+        public string Custom_logo { get; set; }
 
+        /// <summary>
+        /// Gets or sets a Payment_method
+        /// </summary>
+        public string Payment_method { get; set; }
 
         /// <summary>
         /// Gets or sets a value for url
