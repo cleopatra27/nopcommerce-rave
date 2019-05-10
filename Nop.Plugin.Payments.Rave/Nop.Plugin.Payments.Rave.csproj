@@ -58,5 +58,7 @@
         <Folder Include="Models\" />
         <Folder Include="Views\" />
         <Folder Include="Controllers\" />
+        <Folder Include="Content\" />
+        <Folder Include="Components\" />
     </ItemGroup>
 </Project>

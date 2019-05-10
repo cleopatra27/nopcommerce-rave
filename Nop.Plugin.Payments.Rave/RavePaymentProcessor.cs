@@ -125,6 +125,7 @@ namespace Nop.Plugin.Payments.Rave
             //get store location
             var storeLocation = _webHelper.GetStoreLocation();
 
+            //variables
             var country = postProcessPaymentRequest.Order.ShippingAddress?.Country.ThreeLetterIsoCode;
             var currency = _currencyService.GetCurrencyById(_currencySettings.PrimaryStoreCurrencyId)?.CurrencyCode;
             var custom_description = "";
@@ -182,10 +183,11 @@ namespace Nop.Plugin.Payments.Rave
         /// </summary>
         public override void Install()
         {
-            ////settings
-            //_settingService.SaveSetting(new RavePaymentSettings
-            //{
-            //});
+            //settings
+            _settingService.SaveSetting(new RavePaymentSettings
+            {
+                live = true
+            });
 
 
             //locales            
@@ -194,19 +196,10 @@ namespace Nop.Plugin.Payments.Rave
             _localizationService.AddOrUpdatePluginLocaleResource("Plugins.Payments.Rave.Fields.Custom_logo", "Custom_logo, url");
             _localizationService.AddOrUpdatePluginLocaleResource("Plugins.Payments.Rave.Fields.Encryptkey", "Encyrpt fee");
             _localizationService.AddOrUpdatePluginLocaleResource("Plugins.Payments.Rave.Fields.Encryptkey.Hint", "Enter encyrpt key to charge your customers.");
-            _localizationService.AddOrUpdatePluginLocaleResource("Plugins.Payments.Rave.Instructions", @"
-                <p>
-                     For plugin configuration follow these steps:<br />
-                    <br />
-                    1. If you haven't already, create an account on rave.flutterwave.com and sign in<br />
-                    2. In the Settings menu (left), choose the API Keys option.
-                    3. You will see three keys listed, a Public key, a Secret key and Encrypty Key. You will need all three. 
-                    <em>Rave supports test keys and production keys. Use whichever pair is appropraite. There's a switch between test/sandbox.</em>
-                    4. Paste these keys into the configuration page of this plug-in. (All keys are required.) 
-                    <br />
-                    <em>Note: If using production keys, the payment form will only work on sites hosted with HTTPS. (Test keys can be used on http sites.) If using test keys, 
-                    use these <a href='https://developer.flutterwave.com/docs/test-cards'>test card numbers from Rave</a>.</em><br />
-                </p>");
+            _localizationService.AddOrUpdatePluginLocaleResource("Plugins.Payments.Rave.Instructions", "<p>For plugin configuration follow these steps:<br />                   <br />                   " +
+            	"1. If you haven't already, create an account on rave.flutterwave.com and sign in<br /> " +
+            	"2. In the Settings menu (left), choose the API Keys option. " +
+            	"3. You will see three keys listed, a Public key, a Secret key and Encrypt Key. You will need all three.                    <em>Rave supports test keys and production keys. Use whichever pair is appropraite. There's a switch between test/sandbox.</em>                   4. Paste these keys into the configuration page of this plug-in. (All keys are required.)                    <br />                   <em>Note: If using production keys, the payment form will only work on sites hosted with HTTPS. (Test keys can be used on http sites.) If using test keys,                    use these <a href='https://developer.flutterwave.com/docs/test-cards'>test card numbers from Rave</a>.</em><br />               </p>");
 
             base.Install();
         }
@@ -240,7 +233,7 @@ namespace Nop.Plugin.Payments.Rave
         /// </summary>
         /// <param name="postProcessPaymentRequest">Payment info required for an order processing</param>
         public void PostProcessPayment(PostProcessPaymentRequest postProcessPaymentRequest)
-         //public string PostProcessPayment(PostProcessPaymentRequest postProcessPaymentRequest)
+        //public string PostProcessPayment(PostProcessPaymentRequest postProcessPaymentRequest)
         {
             //create common query parameters for the request
             var queryParameters = CreateQueryParameters(postProcessPaymentRequest);
