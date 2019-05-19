@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using FluentValidation;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Nop.Web.Framework.Mvc.ModelBinding;
+﻿using Nop.Web.Framework.Mvc.ModelBinding;
 using Nop.Web.Framework.Models;
 namespace Nop.Plugin.Payments.Rave.Models
 {
@@ -14,13 +9,17 @@ namespace Nop.Plugin.Payments.Rave.Models
 
         public int ActiveStoreScopeConfiguration { get; set; }
 
+        [NopResourceDisplayName("Plugins.Payments.Rave.Fields.Live")]
+        public bool Live { get; set; }
+        public bool Live_OverrideForStore { get; set; }
+
         [NopResourceDisplayName("Plugins.Payments.Rave.Fields.SecretKey")]
         public string SecretKey { get; set; }
         public bool SecretKey_OverrideForStore { get; set; }
 
         [NopResourceDisplayName("Plugins.Payments.Rave.Fields.PublicKey")]
-        public string Publickey { get; set; }
-        public bool Publickey_OverrideForStore { get; set; }
+        public string PublicKey { get; set; }
+        public bool PublicKey_OverrideForStore { get; set; }
 
         [NopResourceDisplayName("Plugins.Payments.Rave.Fields.EncryptKey")]
         public string EncryptKey { get; set; }

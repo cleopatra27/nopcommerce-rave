@@ -1,40 +1,47 @@
 ﻿@model Nop.Plugin.Payments.Rave.Models.ConfigurationModel
+@inject Nop.Core.IWebHelper webHelper
 @{
     Layout = "_ConfigurePlugin";
 }
-@inject Nop.Core.IWebHelper webHelper
-
-<script>$(document).ready(function () {
-
-    });</script>
+@await Component.InvokeAsync("StoreScopeConfiguration")
 
 <form asp-controller="PaymentRave" asp-action="Configure" method="post">
     <div class="panel-group">
         <div class="panel panel-default">
             <div class="panel-body">
-
-                <div class="form-group" id="SecretKey">
+                <div class="form-group">
                     <div class="col-md-3">
+                        <nop-override-store-checkbox asp-for="Live_OverrideForStore" asp-input="Live" asp-store-scope="@Model.ActiveStoreScopeConfiguration" />
+                        <nop-label asp-for="Live" />
+                    </div>
+                    <div class="col-md-9">
+                        <nop-editor asp-for="Live" />
+                        <span asp-validation-for="Live"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-3">
+                        <nop-override-store-checkbox asp-for="SecretKey_OverrideForStore" asp-input="SecretKey" asp-store-scope="@Model.ActiveStoreScopeConfiguration" />
                         <nop-label asp-for="SecretKey" />
                     </div>
                     <div class="col-md-9">
-                        <nop-editor asp-for="SecretKey" asp-required="true" />
+                        <nop-editor asp-for="SecretKey" />
                         <span asp-validation-for="SecretKey"></span>
                     </div>
                 </div>
-
-                <div class="form-group" id="Publickey">
-                    <div class="col-md-3">
-                        <nop-label asp-for="Publickey" />
-                    </div>
-                    <div class="col-md-9">
-                        <nop-editor asp-for="Publickey" asp-required="true" />
-                        <span asp-validation-for="Publickey"></span>
-                    </div>
-                </div>
-
                 <div class="form-group">
                     <div class="col-md-3">
+                        <nop-override-store-checkbox asp-for="PublicKey_OverrideForStore" asp-input="PublicKey" asp-store-scope="@Model.ActiveStoreScopeConfiguration" />
+                        <nop-label asp-for="PublicKey" />
+                    </div>
+                    <div class="col-md-9">
+                        <nop-editor asp-for="PublicKey" />
+                        <span asp-validation-for="PublicKey"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-3">
+                        <nop-override-store-checkbox asp-for="EncryptKey_OverrideForStore" asp-input="EncryptKey" asp-store-scope="@Model.ActiveStoreScopeConfiguration" />
                         <nop-label asp-for="EncryptKey" />
                     </div>
                     <div class="col-md-9">
@@ -44,16 +51,7 @@
                 </div>
                 <div class="form-group">
                     <div class="col-md-9 col-md-offset-3">
-                        <div class="input-group input-group-short">
-                            <div class="input-group-text">
-                                <input type="submit" name="save" class="btn btn-primary" value="@T("Admin.Common.Save")" />
-                            </div>
-                            @if (
-  !string.IsNullOrEmpty(Model.SecretKey) || !string.IsNullOrEmpty(Model.Publickey))
-    {
-
-    }
-                        </div>
+                        <input type="submit" name="save" class="btn bg-primary" value="@T("Admin.Common.Save")" />
                     </div>
                 </div>
             </div>

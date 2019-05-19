@@ -29,19 +29,6 @@
           "lib/netstandard1.1/Autofac.Extensions.DependencyInjection.dll": {}
         }
       },
-      "Autofac.Mvc5/4.0.2": {
-        "type": "package",
-        "dependencies": {
-          "Autofac": "[4.0.1, 5.0.0)",
-          "Microsoft.AspNet.Mvc": "[5.1.0, 6.0.0)"
-        },
-        "compile": {
-          "lib/net45/Autofac.Integration.Mvc.dll": {}
-        },
-        "runtime": {
-          "lib/net45/Autofac.Integration.Mvc.dll": {}
-        }
-      },
       "AutoMapper/7.0.1": {
         "type": "package",
         "dependencies": {
@@ -102,17 +89,6 @@
           "lib/netstandard1.3/Castle.Core.dll": {}
         }
       },
-      "EntityFramework/6.2.0": {
-        "type": "package",
-        "compile": {
-          "lib/net45/EntityFramework.SqlServer.dll": {},
-          "lib/net45/EntityFramework.dll": {}
-        },
-        "runtime": {
-          "lib/net45/EntityFramework.SqlServer.dll": {},
-          "lib/net45/EntityFramework.dll": {}
-        }
-      },
       "EPPlus/4.5.2.1": {
         "type": "package",
         "dependencies": {
@@ -135,10 +111,13 @@
           "lib/netstandard2.0/EPPlus.dll": {}
         }
       },
-      "FluentValidation/8.2.3": {
+      "FluentValidation/7.6.104": {
         "type": "package",
         "dependencies": {
-          "System.ComponentModel.Annotations": "4.4.1"
+          "System.Collections.Concurrent": "4.3.0",
+          "System.ComponentModel.Annotations": "4.4.1",
+          "System.ComponentModel.Primitives": "4.3.0",
+          "System.ValueTuple": "4.5.0"
         },
         "compile": {
           "lib/netstandard2.0/FluentValidation.dll": {}
@@ -204,28 +183,6 @@
           "lib/netstandard2.0/MaxMind.GeoIP2.dll": {}
         }
       },
-      "Microsoft.AspNet.Mvc/5.2.7": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.AspNet.Razor": "[3.2.7, 3.3.0)",
-          "Microsoft.AspNet.WebPages": "[3.2.7, 3.3.0)"
-        },
-        "compile": {
-          "lib/net45/System.Web.Mvc.dll": {}
-        },
-        "runtime": {
-          "lib/net45/System.Web.Mvc.dll": {}
-        }
-      },
-      "Microsoft.AspNet.Razor/3.2.7": {
-        "type": "package",
-        "compile": {
-          "lib/net45/System.Web.Razor.dll": {}
-        },
-        "runtime": {
-          "lib/net45/System.Web.Razor.dll": {}
-        }
-      },
       "Microsoft.AspNet.WebApi.Client/5.2.6": {
         "type": "package",
         "dependencies": {
@@ -237,25 +194,6 @@
         },
         "runtime": {
           "lib/netstandard2.0/System.Net.Http.Formatting.dll": {}
-        }
-      },
-      "Microsoft.AspNet.WebPages/3.2.7": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.AspNet.Razor": "[3.2.7, 3.3.0)",
-          "Microsoft.Web.Infrastructure": "1.0.0"
-        },
-        "compile": {
-          "lib/net45/System.Web.Helpers.dll": {},
-          "lib/net45/System.Web.WebPages.Deployment.dll": {},
-          "lib/net45/System.Web.WebPages.Razor.dll": {},
-          "lib/net45/System.Web.WebPages.dll": {}
-        },
-        "runtime": {
-          "lib/net45/System.Web.Helpers.dll": {},
-          "lib/net45/System.Web.WebPages.Deployment.dll": {},
-          "lib/net45/System.Web.WebPages.Razor.dll": {},
-          "lib/net45/System.Web.WebPages.dll": {}
         }
       },
       "Microsoft.AspNetCore/2.1.2": {
@@ -2842,15 +2780,6 @@
           "lib/netstandard1.0/_._": {}
         }
       },
-      "Microsoft.Web.Infrastructure/1.0.0": {
-        "type": "package",
-        "compile": {
-          "lib/net40/Microsoft.Web.Infrastructure.dll": {}
-        },
-        "runtime": {
-          "lib/net40/Microsoft.Web.Infrastructure.dll": {}
-        }
-      },
       "Microsoft.Win32.Primitives/4.3.0": {
         "type": "package",
         "dependencies": {
@@ -5286,23 +5215,6 @@
           "bin/placeholder/Nop.Services.dll": {}
         }
       },
-      "Nop.Web/4.1.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v2.1",
-        "dependencies": {
-          "Microsoft.NETCore.App": "2.1.0",
-          "Nop.Core": "4.1.0",
-          "Nop.Data": "4.1.0",
-          "Nop.Services": "4.1.0",
-          "Nop.Web.Framework": "4.1.0"
-        },
-        "compile": {
-          "bin/placeholder/Nop.Web.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/Nop.Web.dll": {}
-        }
-      },
       "Nop.Web.Framework/4.1.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v2.1",
@@ -5349,19 +5261,6 @@
         "autofac.extensions.dependencyinjection.nuspec",
         "lib/netstandard1.1/Autofac.Extensions.DependencyInjection.dll",
         "lib/netstandard1.1/Autofac.Extensions.DependencyInjection.xml"
-      ]
-    },
-    "Autofac.Mvc5/4.0.2": {
-      "sha512": "8cA5Qq0bBpLUrWqeksF/54ehXUFuA+zI+cGc055/Fc1jc063UbJX8SG2hMWQKoNjlZUlPApx1wpnOWfzYQvcYA==",
-      "type": "package",
-      "path": "autofac.mvc5/4.0.2",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "autofac.mvc5.4.0.2.nupkg.sha512",
-        "autofac.mvc5.nuspec",
-        "lib/net45/Autofac.Integration.Mvc.dll",
-        "lib/net45/Autofac.Integration.Mvc.xml"
       ]
     },
     "AutoMapper/7.0.1": {
@@ -5443,35 +5342,6 @@
         "readme.txt"
       ]
     },
-    "EntityFramework/6.2.0": {
-      "sha512": "+aB/cnEAr9KqVMjmZwu+Fzy3EOPjCIzNsPAUyn19WbB2u3LFHd2OB3X56ohAj7EBf2hppl9M27nlRnkQxOhoAA==",
-      "type": "package",
-      "path": "entityframework/6.2.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "content/net40/App.config.transform",
-        "content/net40/Web.config.transform",
-        "entityframework.6.2.0.nupkg.sha512",
-        "entityframework.nuspec",
-        "lib/net40/EntityFramework.SqlServer.dll",
-        "lib/net40/EntityFramework.SqlServer.xml",
-        "lib/net40/EntityFramework.dll",
-        "lib/net40/EntityFramework.xml",
-        "lib/net45/EntityFramework.SqlServer.dll",
-        "lib/net45/EntityFramework.SqlServer.xml",
-        "lib/net45/EntityFramework.dll",
-        "lib/net45/EntityFramework.xml",
-        "tools/EntityFramework.PowerShell.Utility.dll",
-        "tools/EntityFramework.PowerShell.dll",
-        "tools/EntityFramework.psd1",
-        "tools/EntityFramework.psm1",
-        "tools/about_EntityFramework.help.txt",
-        "tools/init.ps1",
-        "tools/install.ps1",
-        "tools/migrate.exe"
-      ]
-    },
     "EPPlus/4.5.2.1": {
       "sha512": "RvjKg4vQk7aZI16BbnROs0pMYOMvsOUiwAKgYJu/x/j0Vzm33dPE004bNnmkAMw6+XMYX66FaMnxByfZeLdDuQ==",
       "type": "package",
@@ -5490,14 +5360,14 @@
         "readme.txt"
       ]
     },
-    "FluentValidation/8.2.3": {
-      "sha512": "jif5YdeNQOp62bmpfB1l4UG6VYp6aWd00fKGwNWP25s6mbGOqXzd09EtjI1woLXaOO3tqDCLFa8YI0lLrK0aWw==",
+    "FluentValidation/7.6.104": {
+      "sha512": "zHODi5T4CkYm9WgukQaCfsMARg7FJeWPk2REwVflOlWIUhTX4iNgqa6Zf9/bpTlagTq2wSnVr9bbIUd8Y/uOrg==",
       "type": "package",
-      "path": "fluentvalidation/8.2.3",
+      "path": "fluentvalidation/7.6.104",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "fluentvalidation.8.2.3.nupkg.sha512",
+        "fluentvalidation.7.6.104.nupkg.sha512",
         "fluentvalidation.nuspec",
         "lib/net45/FluentValidation.dll",
         "lib/net45/FluentValidation.xml",
@@ -5573,34 +5443,6 @@
         "maxmind.geoip2.nuspec"
       ]
     },
-    "Microsoft.AspNet.Mvc/5.2.7": {
-      "sha512": "uvwf1Ei1jUCLoMb14MhzDYJLKk0N73256fNSfsGZOAdfdrfukBBVFsmZCRYpSsT9PHvkee6eTuenqBj3LD0hMQ==",
-      "type": "package",
-      "path": "microsoft.aspnet.mvc/5.2.7",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "Content/Web.config.install.xdt",
-        "Content/Web.config.uninstall.xdt",
-        "lib/net45/System.Web.Mvc.dll",
-        "lib/net45/System.Web.Mvc.xml",
-        "microsoft.aspnet.mvc.5.2.7.nupkg.sha512",
-        "microsoft.aspnet.mvc.nuspec"
-      ]
-    },
-    "Microsoft.AspNet.Razor/3.2.7": {
-      "sha512": "ao+aCwMDXevvGZJnN/emN5/jbC8e0NXkPUk3XXjmuK3n0rhCOIGD0+8CMzhCr7bgGExFa7aXqcWZhl7jiLtNlg==",
-      "type": "package",
-      "path": "microsoft.aspnet.razor/3.2.7",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "lib/net45/System.Web.Razor.dll",
-        "lib/net45/System.Web.Razor.xml",
-        "microsoft.aspnet.razor.3.2.7.nupkg.sha512",
-        "microsoft.aspnet.razor.nuspec"
-      ]
-    },
     "Microsoft.AspNet.WebApi.Client/5.2.6": {
       "sha512": "91JMnE9zdIDphG00qgRvl8ZwKEjqAbNlJdfXUoMiIWPfpYyH7fyCsTSj6/aynRdw/Qr/K70xC7QC6MOJ1vFBJQ==",
       "type": "package",
@@ -5616,27 +5458,6 @@
         "lib/portable-wp8+netcore45+net45+wp81+wpa81/System.Net.Http.Formatting.xml",
         "microsoft.aspnet.webapi.client.5.2.6.nupkg.sha512",
         "microsoft.aspnet.webapi.client.nuspec"
-      ]
-    },
-    "Microsoft.AspNet.WebPages/3.2.7": {
-      "sha512": "gIIqao/16cAUQufxi7rSIl6iIxSNxiJIGdptjgX7tgl4UNjuQB/lq+Rflpx+03m/0YWfr5gpMxHbOkWb/71LnQ==",
-      "type": "package",
-      "path": "microsoft.aspnet.webpages/3.2.7",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "Content/Web.config.install.xdt",
-        "Content/Web.config.uninstall.xdt",
-        "lib/net45/System.Web.Helpers.dll",
-        "lib/net45/System.Web.Helpers.xml",
-        "lib/net45/System.Web.WebPages.Deployment.dll",
-        "lib/net45/System.Web.WebPages.Deployment.xml",
-        "lib/net45/System.Web.WebPages.Razor.dll",
-        "lib/net45/System.Web.WebPages.Razor.xml",
-        "lib/net45/System.Web.WebPages.dll",
-        "lib/net45/System.Web.WebPages.xml",
-        "microsoft.aspnet.webpages.3.2.7.nupkg.sha512",
-        "microsoft.aspnet.webpages.nuspec"
       ]
     },
     "Microsoft.AspNetCore/2.1.2": {
@@ -8208,18 +8029,6 @@
         "runtime.json",
         "useSharedDesignerContext.txt",
         "version.txt"
-      ]
-    },
-    "Microsoft.Web.Infrastructure/1.0.0": {
-      "sha512": "Bk+FleE3WkOCB707+eD9npx38gvHCA4FikXSW1ETDa+A0IPrhPTWpu/nLGAGxkkXePVRB+nwjDY1ZOs5aE6YBg==",
-      "type": "package",
-      "path": "microsoft.web.infrastructure/1.0.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "lib/net40/Microsoft.Web.Infrastructure.dll",
-        "microsoft.web.infrastructure.1.0.0.nupkg.sha512",
-        "microsoft.web.infrastructure.nuspec"
       ]
     },
     "Microsoft.Win32.Primitives/4.3.0": {
@@ -14355,11 +14164,6 @@
       "path": "../../Libraries/Nop.Services/Nop.Services.csproj",
       "msbuildProject": "../../Libraries/Nop.Services/Nop.Services.csproj"
     },
-    "Nop.Web/4.1.0": {
-      "type": "project",
-      "path": "../../Presentation/Nop.Web/Nop.Web.csproj",
-      "msbuildProject": "../../Presentation/Nop.Web/Nop.Web.csproj"
-    },
     "Nop.Web.Framework/4.1.0": {
       "type": "project",
       "path": "../../Presentation/Nop.Web.Framework/Nop.Web.Framework.csproj",
@@ -14368,15 +14172,7 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.1": [
-      "Autofac.Mvc5 >= 4.0.2",
-      "EntityFramework >= 6.2.0",
-      "FluentValidation >= 8.2.3",
-      "Microsoft.AspNet.Mvc >= 5.2.7",
       "Microsoft.NETCore.App >= 2.1.0",
-      "Nop.Core >= 4.1.0",
-      "Nop.Data >= 4.1.0",
-      "Nop.Services >= 4.1.0",
-      "Nop.Web >= 4.1.0",
       "Nop.Web.Framework >= 4.1.0"
     ]
   },
@@ -14408,20 +14204,8 @@
       "frameworks": {
         "netcoreapp2.1": {
           "projectReferences": {
-            "/Users/cleopatradouglas/Downloads/nopCommerce_4.10_Source/Libraries/Nop.Core/Nop.Core.csproj": {
-              "projectPath": "/Users/cleopatradouglas/Downloads/nopCommerce_4.10_Source/Libraries/Nop.Core/Nop.Core.csproj"
-            },
-            "/Users/cleopatradouglas/Downloads/nopCommerce_4.10_Source/Libraries/Nop.Data/Nop.Data.csproj": {
-              "projectPath": "/Users/cleopatradouglas/Downloads/nopCommerce_4.10_Source/Libraries/Nop.Data/Nop.Data.csproj"
-            },
-            "/Users/cleopatradouglas/Downloads/nopCommerce_4.10_Source/Libraries/Nop.Services/Nop.Services.csproj": {
-              "projectPath": "/Users/cleopatradouglas/Downloads/nopCommerce_4.10_Source/Libraries/Nop.Services/Nop.Services.csproj"
-            },
             "/Users/cleopatradouglas/Downloads/nopCommerce_4.10_Source/Presentation/Nop.Web.Framework/Nop.Web.Framework.csproj": {
               "projectPath": "/Users/cleopatradouglas/Downloads/nopCommerce_4.10_Source/Presentation/Nop.Web.Framework/Nop.Web.Framework.csproj"
-            },
-            "/Users/cleopatradouglas/Downloads/nopCommerce_4.10_Source/Presentation/Nop.Web/Nop.Web.csproj": {
-              "projectPath": "/Users/cleopatradouglas/Downloads/nopCommerce_4.10_Source/Presentation/Nop.Web/Nop.Web.csproj"
             }
           }
         }
@@ -14435,22 +14219,6 @@
     "frameworks": {
       "netcoreapp2.1": {
         "dependencies": {
-          "Autofac.Mvc5": {
-            "target": "Package",
-            "version": "[4.0.2, )"
-          },
-          "EntityFramework": {
-            "target": "Package",
-            "version": "[6.2.0, )"
-          },
-          "FluentValidation": {
-            "target": "Package",
-            "version": "[8.2.3, )"
-          },
-          "Microsoft.AspNet.Mvc": {
-            "target": "Package",
-            "version": "[5.2.7, )"
-          },
           "Microsoft.NETCore.App": {
             "suppressParent": "All",
             "target": "Package",
@@ -14465,67 +14233,5 @@
         "warn": true
       }
     }
-  },
-  "logs": [
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'Autofac.Mvc5 4.0.2' was restored using '.NETFramework,Version=v4.6.1' instead of the project target framework '.NETCoreApp,Version=v2.1'. This package may not be fully compatible with your project.",
-      "libraryId": "Autofac.Mvc5",
-      "targetGraphs": [
-        ".NETCoreApp,Version=v2.1"
-      ]
-    },
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'EntityFramework 6.2.0' was restored using '.NETFramework,Version=v4.6.1' instead of the project target framework '.NETCoreApp,Version=v2.1'. This package may not be fully compatible with your project.",
-      "libraryId": "EntityFramework",
-      "targetGraphs": [
-        ".NETCoreApp,Version=v2.1"
-      ]
-    },
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'Microsoft.AspNet.Mvc 5.2.7' was restored using '.NETFramework,Version=v4.6.1' instead of the project target framework '.NETCoreApp,Version=v2.1'. This package may not be fully compatible with your project.",
-      "libraryId": "Microsoft.AspNet.Mvc",
-      "targetGraphs": [
-        ".NETCoreApp,Version=v2.1"
-      ]
-    },
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'Microsoft.AspNet.Razor 3.2.7' was restored using '.NETFramework,Version=v4.6.1' instead of the project target framework '.NETCoreApp,Version=v2.1'. This package may not be fully compatible with your project.",
-      "libraryId": "Microsoft.AspNet.Razor",
-      "targetGraphs": [
-        ".NETCoreApp,Version=v2.1"
-      ]
-    },
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'Microsoft.AspNet.WebPages 3.2.7' was restored using '.NETFramework,Version=v4.6.1' instead of the project target framework '.NETCoreApp,Version=v2.1'. This package may not be fully compatible with your project.",
-      "libraryId": "Microsoft.AspNet.WebPages",
-      "targetGraphs": [
-        ".NETCoreApp,Version=v2.1"
-      ]
-    },
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'Microsoft.Web.Infrastructure 1.0.0' was restored using '.NETFramework,Version=v4.6.1' instead of the project target framework '.NETCoreApp,Version=v2.1'. This package may not be fully compatible with your project.",
-      "libraryId": "Microsoft.Web.Infrastructure",
-      "targetGraphs": [
-        ".NETCoreApp,Version=v2.1"
-      ]
-    }
-  ]
+  }
 }

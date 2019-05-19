@@ -1,10 +1,12 @@
-﻿@{
+﻿@inject Nop.Core.IWebHelper webHelper
+@{
     Layout = "";
 }
-<table width="100%" cellpadding="0" cellspacing="0">
-    <tr>
-        <td>
-            <p><b>@T("Plugins.Payments.Rave.Fields.RedirectionTip")</b></p>
-        </td>
-    </tr>
-</table>
+<div class="row">
+    <div class="col-md-2">
+        <img src="@Url.Content($"{webHelper.GetStoreLocation()}Plugins/Payments.Rave/logo.jpg")" alt="Rave" />
+    </div>
+    <div class="col-md-8">
+        <b>@T("Plugins.Payments.Rave.Fields.RedirectionTip")</b>
+    </div>
+</div>

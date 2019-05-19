@@ -2,9 +2,9 @@
   "Group": "Payment methods",
   "FriendlyName": "Rave",
   "SystemName": "Payments.Rave",
-  "Version": "1.0",
-  "SupportedVersions": [ "4.10" ],
-  "Author": "cleopatra douglas",
+  "Version": "1.10",
+  "SupportedVersions": [ "4.20" ],
+  "Author": "Olugbenga Dare",
   "DisplayOrder": 1,
   "FileName": "Nop.Plugin.Payments.Rave.dll",
   "Description": "This plugin allows paying with Rave"

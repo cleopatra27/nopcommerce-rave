@@ -11,18 +11,16 @@ namespace Nop.Plugin.Payments.Rave
         /// </summary>
         /// <param name="routeBuilder">Route builder</param>
         public void RegisterRoutes(IRouteBuilder routeBuilder)
-        {
-            //PDT
-            routeBuilder.MapRoute("Plugin.Payments.Rave.PDTHandler", "Plugins/Rave/PDTHandler",
-                 new { controller = "Rave", action = "PDTHandler" });
-
-            //IPN
-            routeBuilder.MapRoute("Plugin.Payments.Rave.IPNHandler", "Plugins/Rave/IPNHandler",
-                 new { controller = "Rave", action = "IPNHandler" });
-
+        {            
+            //This is for return payment
+            routeBuilder.MapRoute("Plugin.Payments.Rave.ReturnPaymentInfo", "Plugins/PaymentRave/ReturnPaymentInfo",
+                 new { controller = "PaymentRave", action = "ReturnPaymentInfo" });
             //Cancel
-            routeBuilder.MapRoute("Plugin.Payments.Rave.CancelOrder", "Plugins/Rave/CancelOrder",
-                 new { controller = "Rave", action = "CancelOrder" });
+            routeBuilder.MapRoute("Plugin.Payments.Rave.CancelOrder", "Plugins/PaymentRave/CancelOrder",
+                 new { controller = "PaymentRave", action = "CancelOrder" });
+            //SubmitPaymentInfo
+           routeBuilder.MapRoute("Plugin.Payments.Rave.SubmitPaymentInfo", "Plugins/PaymentRave/SubmitPaymentInfo",
+           new { controller = "PaymentRave", action = "SubmitPaymentInfo" });
         }
 
         /// <summary>

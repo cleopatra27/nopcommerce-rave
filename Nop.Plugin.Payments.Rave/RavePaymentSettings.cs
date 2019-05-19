@@ -1,4 +1,4 @@
-﻿using Nop.Core.Configuration;
+using Nop.Core.Configuration;
 
 namespace Nop.Plugin.Payments.Rave
 {
@@ -21,7 +21,7 @@ namespace Nop.Plugin.Payments.Rave
         /// <summary>
         /// Gets or sets an Encryptkey
         /// </summary>
-        public string Encryptkey { get; set; }
+        public string EncryptKey { get; set; }
 
 
         /// <summary>
@@ -37,7 +37,7 @@ namespace Nop.Plugin.Payments.Rave
         /// <summary>
         /// Gets or sets a value for url
         /// </summary>
-        public bool live { get; set; }
+        public bool Live { get; set; }
 
 
     }
